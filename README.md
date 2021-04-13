@@ -30,9 +30,9 @@ To test this API using image from calibrated fish-eye camera, you can download t
 
 <img src="image.jpg" width="600">
 
-##### 3.1 Initial configuration
+##### 3.1 Create Object
 
-This is the initial configuration that you need provide the parameter. The camera parameter is the result from calibration camera by MOIL laboratory.  before the successive functions can work correctly, configuration is necessary in the beginning of program. 
+To create the object from Moildev, you have to provide the parameter. The camera parameter is the result from calibration camera by MOIL laboratory that will store on **.json** file.
 
 ```
 moildev = Moildev("Camera_Parameter_Path")
@@ -40,9 +40,7 @@ moildev = Moildev("Camera_Parameter_Path")
 
 **Parameter:**
 
-```
 Camera_Parameter_Path : The path of the *.json* file that stored the camera parameter from calibration result.
-```
 
 **Example:**
 
@@ -81,7 +79,7 @@ Example:
 ##### 3.3 **Create anypoint maps**
 
 ```
-map_x, map_y = moildev.getAnypointMaps(self, alpha, beta, zoom, mode=1)
+map_x, map_y = moildev.getAnypointMaps(alpha, beta, zoom, mode=1)
 ```
 
 **Purpose:**
@@ -113,7 +111,7 @@ The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and 
 ##### 3.4 Anypoint 
 
 ```
-anypoint_image = moildev.anypoint(self, image, alpha, beta, zoom, mode=1)
+anypoint_image = moildev.anypoint(image, alpha, beta, zoom, mode=1)
 ```
 
 **Purpose :**
@@ -151,7 +149,7 @@ The result:
 ##### 3.5 Create panorama maps
 
 ```
-map_x, map_y = moildev.getPanoramaMaps(self, alpha_min, alpha_max)
+map_x, map_y = moildev.getPanoramaMaps(alpha_min, alpha_max)
 ```
 
 **Purpose :**
@@ -179,7 +177,7 @@ To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result 
 **2.6 Panorama**
 
 ```
-panorama_image = moildev.panorama(image, alpha_max, iC_alpha_degree)
+panorama_image = moildev.panorama(image, alpha_min, alpha_max)
 ```
 
 **Purpose:**
@@ -215,5 +213,5 @@ The result:
 
 ### 4. About Us
 
-***Omnidirectional, Surveillance and Imaging laboratory (OIL-Lab) Ming Chi University of Technology, Taiwan***
+Omnidirectional, Surveillance and Imaging laboratory (OIL-Lab) Ming Chi University of Technology, Taiwan***
 
