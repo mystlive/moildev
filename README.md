@@ -160,5 +160,5 @@ reverse = moildev.panorama(image, alpha_max, alpha, beta)
 
 ### 3. About Us
 
-***Ming-Chi Omnidirectional, Surveillance, and Imaging laboratory (MOIL-Lab), Ming Chi University of Technology, Taiwan***
+***Ming-Chi Omni-directional, Surveillance, and Imaging laboratory (MOIL-Lab), Ming Chi University of Technology, Taiwan***
 
