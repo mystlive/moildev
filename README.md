@@ -1,4 +1,4 @@
-<p align="center"><img src="doc/assets/moildev.jpg" width="25%"/><br><br></p>
+<p align="center"><img src="doc/assets/moildev.jpg" width="30%"/></p>
 
 ---
 
@@ -12,7 +12,7 @@ python 3.6 .. 3.10| python 3.6 .. 3.10 | Under development
 ### 1. How to install
 This library now available in pypi distribution. install the newest version. visit link here https://pypi.org/project/Moildev/ 
 
-To install using python pakcge index(PyPI) distribution, you can use the command bellow.
+To install using python package index(PyPI) distribution, you can use the command bellow.
 
 ```python
 pip3 install moildev
