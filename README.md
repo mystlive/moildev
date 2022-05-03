@@ -1,114 +1,84 @@
-## Moildev Library
+<p align="center"><img src="doc/assets/moildev.jpg" width="25%"/><br><br></p>
 
-Moildev Library is a collection of functions support python to developments fisheye image applications.
+---
 
-- Anypoint image
+Moildev Library is a collection of functions that support the development of fisheye image applications based on python programing language. You can refer to this link to going deep on this library. currently the library can support for:
 
-![](./assets/anypoint.jpg)
+Linux OS                                                  | Windows os       | Mac OS X 
+----------------------------------------------------------|------------------|---
+python 3.6 .. 3.10| python 3.6 .. 3.10 | Under development 
 
-- Panorama Image 
 
-![](./assets/panorama.png)
-
-## 1. How to install
+### 1. How to install
 This library now available in pypi distribution. install the newest version. visit link here https://pypi.org/project/Moildev/ 
+
+To install using python pakcge index(PyPI) distribution, you can use the command bellow.
+
+```python
+pip3 install moildev
 ```
-$ pip install moildev or $ pip3 install moildev
-```
-
-### 2. Import Library
-
-import moildev library:
-
-```
->> from Moildev import Moildev
-```
-
-### 3. Application programming interface (API) Reference
-
-To test this API using image from calibrated fish-eye camera, you can download the image from [this link](https://drive.google.com/file/d/1Cq8vIcsE7I8NYcL_nb8k7OBYjy9LLCx6/view?usp=sharing). the original image is showing bellow:
-
-<img src="image.jpg" width="600">
-
-##### 3.1 Create Object
-
-To create the object from Moildev, you have to provide the parameter. The camera parameter is the result from calibration camera by MOIL laboratory that will store on **.json** file.
+Or you can install manually by clone this repository to your local directory, then follow this command:
 
 ```
-moildev = Moildev("Camera_Parameter_Path")
+cd Moildev
+pip install -r requirments.txt
+pip install Moildev
 ```
 
-**Parameter:**
+### 2. Get in with Moildev library:
 
-Camera_Parameter_Path : The path of the *.json* file that stored the camera parameter from calibration result.
+##### 2.1 Create Object
 
-**Example:**
-
-```
->> moildev = Moildev("Raspi_Cam.json")
-```
-
-##### 3.2 test
+>Import library
 
 ```
-moildev.test()
+from Moildev import Moildev
 ```
 
-**Purpose:**
+Each fisheye camera can be calibrated and derives a set of parameters by MOIL laboratory, before the successive functions can work correctly, configuration is necessary in the beginning of program. To create the object from Moildev, you have to pass the camera parameter to the package. There 3 way to create object of moildev:
 
-The function will return feedback from share object library to make sure the library work properly.
+  1. Create object using **input keyword arguments**
+  2. Create object using **one parameter** with json file format extension 
+  3. Create object using **multiple parameter** with json file format extension
 
-**Example:**
+>List of camera parameters keyword used to create moildev objects:
 
-```
->> from Moildev import Moildev
->> moildev = Moildev("Raspi_Cam.json")
->> moildev.test()
-```
+- cameraName = the name of the camera used
+- cameraFov = camera field of view (FOV)
+- sensorWidth = size of sensor width
+- sensorHeight = size of sensor height
+- icx = center image in x-axis
+- icy = center image in y-axis
+- ratio = the value of the ratio image
+- imageWidth = the size of width image
+- imageHeight = the size of height image
+- calibrationRatio = the value of calibration ratio
+- parameter0 .. parameter5= intrinsic fisheye camera parameter get from calibration
 
-When you run the code, the output will be:
+For more information about create object you can read this example
 
-```
-Hello From C++ share object Library
-```
+##### 2.2 **Create anypoint maps**
 
-Example:
-
-![](./assets/test-1.png)
-
-##### 3.3 **Create anypoint maps**
-
-```
+```buildoutcfg
 map_x, map_y = moildev.getAnypointMaps(alpha, beta, zoom, mode=1)
 ```
 
 **Purpose:**
 
-The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fish-eye image to the target angle image.
+>The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fish-eye image to the target angle image.
 
 **Parameter:**
 
-```
+```buildoutcfg
 . alpha: alpha
 . beta: beta
 . zoom: decimal zoom factor, normally 1..12
 . selection anypoint mode(1 or 2), by default if will be mode 1
 ```
 
-**Example :**
+See [example](https://github.com/MoilOrg/moildev)
 
-```
->> from Moildev import Moildev
->> moildev = Moildev("Raspi_Cam.json")
->> map_x, map_y = moildev.getAnypointMaps(0, 60, 4, 1)
->> print(map_x)
-```
-
-**Create file contain the code above, then running by python.**
-
-![](./assets/anypoint_maps.png)
-
-##### 3.4 Anypoint 
+##### 2.3 Anypoint 
 
 ```
 anypoint_image = moildev.anypoint(image, alpha, beta, zoom, mode=1)
@@ -116,11 +86,11 @@ anypoint_image = moildev.anypoint(image, alpha, beta, zoom, mode=1)
 
 **Purpose :**
 
-Generate anypoint view image. For mode 1, the result rotation is betaOffset degree rotation around the Z-axis(roll) after alphaOffset degree rotation around the X-axis(pitch). for mode 2, The result rotation is theta_Y degree rotation around the Y-axis(yaw) after theta_X degree rotation around the X-axis(pitch).
+> Generate anypoint view image. For mode 1, the result rotation is betaOffset degree rotation around the Z-axis(roll) after alphaOffset degree rotation around the X-axis(pitch). for mode 2, The result rotation is theta_Y degree rotation around the Y-axis(yaw) after theta_X degree rotation around the X-axis(pitch).
 
 **Parameter:**
 
-```
+```buildoutcfg
 . image: source image
 . alpha: alpha
 . beta: beta
@@ -128,53 +98,28 @@ Generate anypoint view image. For mode 1, the result rotation is betaOffset degr
 . mode: mode anypoint view (by default it will be mode 1)
 ```
 
-**Example :**
+See [example](https://github.com/MoilOrg/moildev)
 
-```
->> from Moildev import Moildev
->> moildev = Moildev("Raspi_Cam.json")
->> image = cv2.imread("image.jpg")
->> anypoint_image = moildev.anypoint(image, 0, 45, 4, 2)
->> result = cv2.resize(anypoint_image, (800, 600), interpolation=cv2.INTER_AREA)
->> cv2.imshow("Result", result)
->> cv2.waitKey(0)
-```
+##### 2.4 Create panorama maps
 
-![](./assets/anypoint_mode2.png)
-
-The result:
-
-![](./assets/anypoint_2.png)
-
-##### 3.5 Create panorama maps
-
-```
+```buildoutcfg
 map_x, map_y = moildev.getPanoramaMaps(alpha_min, alpha_max)
 ```
 
 **Purpose :**
 
-To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result X-Y Maps can be used later to generate a panorama image from the original fish-eye image. 
+> To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result X-Y Maps can be used later to generate a panorama image from the original fish-eye image. 
 
 **Parameter:**
 
-```
+```buildoutcfg
 . alpha_min = the minimum alpha 
 . alpha_max = the maximum of alpha. The recommended vaule is half of camera FOV. For 	example, use 90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 ```
 
-**Example :**
+See [example](https://github.com/MoilOrg/moildev)
 
-```
->> from Moildev import Moildev
->> moildev = Moildev("Raspi_Cam.json")
->> map_x, map_y = moildev.getPanoramaMaps(10, 110)
->> print(map_x)
-```
-
-![](./assets/maps_pano.png)
-
-**2.6 Panorama**
+**2.5 Panorama**
 
 ```
 panorama_image = moildev.panorama(image, alpha_min, alpha_max)
@@ -182,36 +127,38 @@ panorama_image = moildev.panorama(image, alpha_min, alpha_max)
 
 **Purpose:**
 
-The panorama image centered at the 3D direction with alpha = iC_alpha_degree and beta = iC_beta_degree.
+> The panorama image centered at the 3D direction with alpha = iC_alpha_degree and beta = iC_beta_degree.
 
 **Parameter:**
 
-```
+```buildoutcfg
 . image = the original image  
 . alpha_min = the minimum alpha 
 . alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use
   90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 ```
 
-**Example :**
+See [example](https://github.com/MoilOrg/moildev)
+
+##### 2.6 Reverse view
 
 ```
->> from Moildev import Moildev
->> moildev = Moildev("Raspi_Cam.json")
->> image = cv2.imread("image.jpg")
->> pano_image = moildev.panorama(image, 10, 110)
->> result = cv2.resize(pano_image, (800, 600), interpolation=cv2.INTER_AREA)
->> cv2.imshow("Result", result)
->> cv2.waitKey(0)
+reverse = moildev.panorama(image, alpha_max, alpha, beta)
 ```
 
-![](./assets/pano_1.png)
+**Purpose:**
+> This function was used for transforming the fisheye image to change the optical point without 
+> manipulating the camera head.
 
-The result:
+**Parameter:**
+```buildoutcfg
+- image = The original fisheye image
+- alpha_max = max of alpha. The recommended value is half of camera FOV.
+- alpha = the value of alpha
+- beta = the value of alpha
+```
 
-![](./assets/panorama_2.png)
+### 3. About Us
 
-### 4. About Us
-
-Omnidirectional, Surveillance and Imaging laboratory (OIL-Lab) Ming Chi University of Technology, Taiwan***
+***Ming-Chi Omnidirectional, Surveillance, and Imaging laboratory (MOIL-Lab), Ming Chi University of Technology, Taiwan***
 

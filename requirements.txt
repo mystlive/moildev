@@ -1,0 +1,4 @@
+opencv-python>=4.2.0.32
+numpy>=1.18.1
+wheel
+setuptools>=56.0.0
