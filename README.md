@@ -1,4 +1,4 @@
-<p align="center"><img src="doc/assets/moildev.jpg" width="30%"/></p>
+<p align="center"><img src="doc/assets/moildev.png" width="30%"/></p>
 
 ---
 
@@ -10,9 +10,7 @@ python 3.6 .. 3.10| python 3.6 .. 3.10 | Under development
 
 
 ### 1. How to install
-This library now available in pypi distribution. install the newest version. visit link here https://pypi.org/project/Moildev/ 
-
-To install using python package index(PyPI) distribution, you can use the command bellow.
+This library now available in pypi distribution **[here](https://pypi.org/project/Moildev/)** , to install using python package index(PyPI) distribution, you can use the command bellow.
 
 ```python
 pip3 install moildev
@@ -55,7 +53,7 @@ Each fisheye camera can be calibrated and derives a set of parameters by MOIL la
 - calibrationRatio = the value of calibration ratio
 - parameter0 .. parameter5= intrinsic fisheye camera parameter get from calibration
 
-For more information about create object you can read this example
+For more information about create object you can read [this example](https://github.com/MoilOrg/moildev/tree/main/examples/getting_started)
 
 ##### 2.2 **Create anypoint maps**
 
@@ -76,7 +74,7 @@ map_x, map_y = moildev.getAnypointMaps(alpha, beta, zoom, mode=1)
 . selection anypoint mode(1 or 2), by default if will be mode 1
 ```
 
-See [example](https://github.com/MoilOrg/moildev)
+See [example](https://github.com/MoilOrg/moildev/tree/main/examples/anypoint)
 
 ##### 2.3 Anypoint 
 
@@ -98,7 +96,7 @@ anypoint_image = moildev.anypoint(image, alpha, beta, zoom, mode=1)
 . mode: mode anypoint view (by default it will be mode 1)
 ```
 
-See [example](https://github.com/MoilOrg/moildev)
+See [example](https://github.com/MoilOrg/moildev/tree/main/examples/anypoint)
 
 ##### 2.4 Create panorama maps
 
@@ -117,7 +115,7 @@ map_x, map_y = moildev.getPanoramaMaps(alpha_min, alpha_max)
 . alpha_max = the maximum of alpha. The recommended vaule is half of camera FOV. For 	example, use 90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 ```
 
-See [example](https://github.com/MoilOrg/moildev)
+See [example](https://github.com/MoilOrg/moildev/tree/main/examples/panorama)
 
 **2.5 Panorama**
 
@@ -138,7 +136,7 @@ panorama_image = moildev.panorama(image, alpha_min, alpha_max)
   90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 ```
 
-See [example](https://github.com/MoilOrg/moildev)
+See [example](https://github.com/MoilOrg/moildev/tree/main/examples/panorama)
 
 ##### 2.6 Reverse view
 
@@ -157,6 +155,8 @@ reverse = moildev.panorama(image, alpha_max, alpha, beta)
 - alpha = the value of alpha
 - beta = the value of alpha
 ```
+
+See [example](https://github.com/MoilOrg/moildev/tree/main/examples/Reverse_view)
 
 ### 3. About Us
 
